@@ -9,29 +9,9 @@ namespace pixmap
 {
     namespace Filter
     {
-        class Filter
-        {
-          public:
-            virtual Pixmap matrix() const = 0;
-        };
-        class EdgeDetect
-        : public Filter
-        {
-          public:
-            Pixmap matrix() const;
-        };
-        class Sharpen
-        : public Filter
-        {
-          public:
-            Pixmap matrix() const;
-        };
-        class Blur
-        : public Filter
-        {
-          public:
-            Pixmap matrix() const;
-        };
+        Pixmap EdgeDetect();
+        Pixmap Sharpen();
+        Pixmap Blur();
     }
 }
 

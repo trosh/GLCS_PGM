@@ -5,7 +5,7 @@ CPPFLAGS := -std=c++11 -Wall -O2 -fopenmp
 
 all: main
 
-main: main.cpp Pixels.o Pixmap.o Filter.o PGM.o Convolution.hpp
+main: main.cpp Pixels.o Pixmap.o Filter.o PGM.o
 	$(CPPC) $(CPPFLAGS) -o$@ Pixels.o Pixmap.o Filter.o PGM.o $<
 
 Pixels.o: Pixels.cpp Pixels.hpp Pixel.hpp

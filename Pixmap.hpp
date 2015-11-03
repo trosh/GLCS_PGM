@@ -26,8 +26,9 @@ namespace pixmap
         : size_(size)
         , pixels_(pixels)
         {}
-        template <typename T>
-        friend Pixmap Convolution(const Pixmap &);
+        Pixmap Convolution(
+                const Pixmap &,
+                const int mpi_nproc=1) const;
         friend std::ostream &
         operator<<(std::ostream &,
            const pixmap::Pixmap &);

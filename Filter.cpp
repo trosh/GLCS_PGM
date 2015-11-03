@@ -1,7 +1,7 @@
 #include "Filter.hpp"
 
 pixmap::Pixmap
-pixmap::Filter::EdgeDetect::matrix() const
+pixmap::Filter::EdgeDetect()
 {
     std::vector<float> m = {
         -1, -1, -1,
@@ -12,7 +12,7 @@ pixmap::Filter::EdgeDetect::matrix() const
 }
 
 pixmap::Pixmap
-pixmap::Filter::Blur::matrix() const
+pixmap::Filter::Blur()
 {
     std::vector<float> m = {
         0, 1, 2, 1, 0,
@@ -29,7 +29,7 @@ pixmap::Filter::Blur::matrix() const
 }
 
 pixmap::Pixmap
-pixmap::Filter::Sharpen::matrix() const
+pixmap::Filter::Sharpen()
 {
     std::vector<float> m = {
         -0.2, -0.2, -0.2,
