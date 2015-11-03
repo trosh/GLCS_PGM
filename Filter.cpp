@@ -32,9 +32,9 @@ pixmap::Pixmap
 pixmap::Filter::Sharpen::matrix() const
 {
     std::vector<float> m = {
-        -1, -1, -1,
-        -1,  9, -1,
-        -1, -1, -1
+        -0.2, -0.2, -0.2,
+        -0.2,    2, -0.2,
+        -0.2, -0.2, -0.2
     };
     return Pixmap(Pos(3, 3), Pixels(m));
 }
