@@ -1,10 +1,12 @@
 #include <iostream>
 #include "Filter.hpp"
 #include "Pixmap.hpp"
+#include "PixPara.hpp"
 #include "PGM.hpp"
 
 int main(int argc, char * argv[])
 {
+    //pixmap::Init(&argc, &argv); /* REQUIRED, ACCORDING TO DOC */
     if (argc != 2)
     {
         std::cout << "[\033[31mERROR\033[0m] "
@@ -13,10 +15,9 @@ int main(int argc, char * argv[])
     }
     pixmap::PGM PGMReader;
     pixmap::Pixmap img = PGMReader.read(argv[1]);
-    pixmap::Pixmap img_blur;
-    pixmap::Pixmap img_sharp;
-    img_blur = img.Convolution(pixmap::Filter::Blur(), 4);
-    img_sharp = img.Convolution(pixmap::Filter::Sharpen());
+    pixmap::Pixmap img_blur = img.Convolution(pixmap::Filter::Blur(), 4);
+    pixmap::Pixmap img_sharp = img.Convolution(pixmap::Filter::Sharpen());
+    pixmap::Pixmap img_edgedetect = img.Convolution<pixmap::Filter::EdgeDetectTL>();
     std::string input;
     std::cout << "\033[7mPRESS ANY KEY FOR ORIGINAL\033[0m" << std::endl;
     getchar();
@@ -27,6 +28,7 @@ int main(int argc, char * argv[])
     std::cout << "\033[7mPRESS ANY KEY FOR SHARPENED\033[0m" << std::endl;
     getchar();
     std::cout << img_sharp << std::endl;
+    //voidpixmap::Finalize(); /* REQUIRED, ACCORDING TO DOC */
     return 0;
 }
 

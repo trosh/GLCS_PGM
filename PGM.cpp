@@ -2,6 +2,7 @@
 
 pixmap::Pixmap pixmap::PGM::read(const std::string & filename)
 {
+    if (PN != 0) return o;
     std::ifstream file(filename, std::ios::in);
     if ( ! file.is_open() )
     {

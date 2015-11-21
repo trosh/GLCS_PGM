@@ -24,8 +24,12 @@ namespace pixmap
         Pixmap(const Pos    & size,
                const Pixels & pixels)
         : size_(size)
-        , pixels_(pixels)
-        {}
+        , pixels_(pixels) {}
+        //Pixmap(Pos && size,
+        //       Pixels && pixels)
+        //: size_(std::move(size))
+        //, pixels_(std::move(pixels)) {}
+        Pixmap(const Pixmap &) = default;
         Pixmap Convolution(
                 const Pixmap &,
                 const int mpi_nproc=1) const;

@@ -1,16 +1,17 @@
 #include "Pixmap.hpp"
 
-//#include <cmpi>
-
-//pixmap::__Convolution__worker(
-
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
+
+//pixmap::__Convolution_worker()
+//{
+//}
 
 pixmap::Pixmap pixmap::Pixmap::Convolution(
         const pixmap::Pixmap & filtermap,
         const int mpi_nproc) const
 {
+    if (PN != 0) __Convolution_worker();
     int w = size_.first;
     int h = size_.second;
     Pixels result(w*h);
@@ -48,6 +49,7 @@ pixmap::Pixmap pixmap::Pixmap::Convolution(
 std::ostream &
 pixmap::operator<<(std::ostream & o, const pixmap::Pixmap & map)
 {
+    if (PN != 0) return o;
     o << map.size_.first << "x" << map.size_.second << std::endl;
     for (int y=0; y<map.size_.second-1; y+=2)
     {
