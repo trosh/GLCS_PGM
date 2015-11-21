@@ -6,7 +6,7 @@
 
 int main(int argc, char * argv[])
 {
-    //pixmap::Init(&argc, &argv); /* REQUIRED, ACCORDING TO DOC */
+    pixmap::Init(&argc, &argv); /* REQUIRED, ACCORDING TO DOC */
     if (argc != 2)
     {
         std::cout << "[\033[31mERROR\033[0m] "
@@ -28,7 +28,7 @@ int main(int argc, char * argv[])
     std::cout << "\033[7mPRESS ANY KEY FOR SHARPENED\033[0m" << std::endl;
     getchar();
     std::cout << img_sharp << std::endl;
-    //voidpixmap::Finalize(); /* REQUIRED, ACCORDING TO DOC */
+    voidpixmap::Finalize(); /* REQUIRED, ACCORDING TO DOC */
     return 0;
 }
 
