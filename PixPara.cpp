@@ -1,14 +1,19 @@
 #include "PixPara.hpp"
 
-void pixmap::Init(int * argcp, char * (* argvp[]))
+void pixmap::Parallel::Init(int * argcp, char * (* argvp[]))
 {
     MPI_Init(argcp, argvp);
-    MPI_Comm_size(MPI_COMM_WORLD, &NP);
-    MPI_Comm_rank(MPI_COMM_WORLD, &PN);
+    MPI_Comm_size(MPI_COMM_WORLD, &pixmap::Parallel::NP);
+    MPI_Comm_rank(MPI_COMM_WORLD, &pixmap::Parallel::PN);
+    pixmap::Parallel::IsRoot == (pixmap::Parallel::PN == 0);
 }
 
-void pixmap::Finalize()
+void pixmap::Parallel::Finalize()
 {
     MPI_Finalize();
 }
 
+void pixmap::Parallel::Abort()
+{
+    MPI_Abort(MPI_COMM_WORLD);
+}

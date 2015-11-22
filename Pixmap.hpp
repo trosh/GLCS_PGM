@@ -18,6 +18,8 @@ namespace pixmap
       private:
         Pos size_;
         Pixels pixels_;
+        Pixmap __Convolution_master(const Pixmap & filtermap);
+        Pixmap __Convolution_worker(const Pixmap & filtermap);
       public:
         Pixmap()
         {}
@@ -30,9 +32,7 @@ namespace pixmap
         //: size_(std::move(size))
         //, pixels_(std::move(pixels)) {}
         Pixmap(const Pixmap &) = default;
-        Pixmap Convolution(
-                const Pixmap &,
-                const int mpi_nproc=1) const;
+        Pixmap Convolution(const Pixmap & filtermap) const;
         friend std::ostream &
         operator<<(std::ostream &,
            const pixmap::Pixmap &);

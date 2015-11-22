@@ -3,15 +3,26 @@
 #define MIN(a, b) (((a) < (b)) ? (a) : (b))
 #define MAX(a, b) (((a) > (b)) ? (a) : (b))
 
-//pixmap::__Convolution_worker()
-//{
-//}
+pixmap::Pixmap pixmap::Pixmap::__Convolution_master(
+        const pixmap::Pixmap & filtermap) const
+{
+}
+
+pixmap::Pixmap pixmap::Pixmap::__Convolution_worker(
+        const pixmap::Pixmap & filtermap) const
+{
+}
 
 pixmap::Pixmap pixmap::Pixmap::Convolution(
-        const pixmap::Pixmap & filtermap,
-        const int mpi_nproc) const
+        const pixmap::Pixmap & filtermap) const
 {
-    if (PN != 0) __Convolution_worker();
+    /* PARALLEL */
+    if (pixmap::Parallel::NP > 1)
+        if (pixmap::Parallel::IsRoot)
+            return __Convolution_master(filtermap);
+        else
+            return __Convolution_worker(filtermap);
+    /* SEQUENTIAL */
     int w = size_.first;
     int h = size_.second;
     Pixels result(w*h);

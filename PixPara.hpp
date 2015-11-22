@@ -6,10 +6,15 @@
 
 namespace pixmap
 {
-    static int NP;
-    static int PN;
-    void Init(int * argcp, char * (* argvp[]));
-    void Finalize();
+    namespace Parallel
+    {
+        int NP; /* NUMBER OF PROCESSES */
+        int PN; /* PROCESS NUMBER */
+        bool IsRoot; /* SELF-EXPLANATORY */
+        void Init(int * argcp, char * (* argvp[]));
+        void Finalize();
+        void Abort();
+    }
 }
 
 #endif // __PIXPARA_HPP__
